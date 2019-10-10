@@ -11,7 +11,6 @@ const grpc = require('grpc');
 const notesProto = grpc.load('notes.proto');
 
 const server = new grpc.Server();
-server.bind('127.0.0.1:50051');
-grpc.ServerCredentials.createInsecure();
+server.bind('127.0.0.1:50051',grpc.ServerCredentials.createInsecure());
 console.log('Server running at 127.0.0.1:50051');
 server.start();
