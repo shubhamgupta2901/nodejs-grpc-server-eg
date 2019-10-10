@@ -9,8 +9,27 @@
 
 const grpc = require('grpc');
 const notesProto = grpc.load('notes.proto');
+const dataStore = require('./dataStore');
 
 const server = new grpc.Server();
+
+/**
+ * Adding NoteService to our gRPC server.
+ * We invoke the server's addService method passing the NoteService service from the notesProto object 
+ * The second parameter accepts an object that we will assign the list key with the value of function handler 
+ * This will be invoked when the client calls the List method. 
+ * It has 2 parameters, call and callback. 
+ * The call is the request from the Client while the callback is a function we will invoke to return the response to the Client.
+ * Inside the list function handler we just call the completion callback passing the notes as the second argument. 
+ * The first argument accepts an error object to indicate if there is an error to the client, in our case we just pass null.
+ */
+server.addService(notesProto.NoteService.service,{
+    list: (_,callback) => {
+        callback(null, dataStore.notes);
+    } 
+})
+
+
 server.bind('127.0.0.1:50051',grpc.ServerCredentials.createInsecure());
 console.log('Server running at 127.0.0.1:50051');
 server.start();

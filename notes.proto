@@ -8,10 +8,24 @@
 
 syntax = "proto3";
 
+/*
+* Writing a NoteService which will contain our rpc methods (think of them as rest apis)
+* These methods take a Proto Message as input and return a Proto Message as output.
+* The first RPC method that we will create for our NoteService is the List method this will return a List of Notes
+****/
 service NoteService {
+    /*
+    * rpc signifies it is a rpc method
+    * List is the name of method
+    * it accepts Empty Message as input
+    * and returns NoteList Message.
+    */
     rpc List (Empty) returns (NoteList){}
 }
 
+/*
+* Creating Empty Message as the empty stub for empty request or empty response for a method
+*/
 message Empty {}
 
 message Note {
@@ -20,6 +34,11 @@ message Note {
     string content = 3;
 }
 
+/*
+* Declaring a NoteList Message 
+* It has only one repeated Note field called notes
+* Repeated means that the field is a type of List or an Array
+*/
 message NoteList {
     repeated Note notes = 1;
 }
