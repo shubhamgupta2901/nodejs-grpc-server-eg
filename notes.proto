@@ -1,0 +1,14 @@
+/*
+* This is the file where we declare our Protocol Buffer Message and gRPC Service.
+* The first thing we want to add inside the proto file is the Note Message that will represent the Note Model object.
+* The Note Model has 3 scalar value fields, id (String), title (String), and content (String).
+* We also need to add unique numbered tags for each field. 
+* We declare the syntax to use the proto3 version of the protocol buffer language
+*/
+
+syntax = "proto3";
+message Note {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+}
