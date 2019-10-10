@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-grpc-server-eg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhamgupta2901/nodejs-grpc-server-eg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubhamgupta2901/nodejs-grpc-server-eg/issues"
+  },
+  "homepage": "https://github.com/shubhamgupta2901/nodejs-grpc-server-eg#readme",
+  "dependencies": {
+    "grpc": "^1.24.0",
+    "uuid": "^3.3.3"
+  }
+}
