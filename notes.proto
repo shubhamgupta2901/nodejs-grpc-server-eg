@@ -22,6 +22,7 @@ service NoteService {
     */
     rpc List (Empty) returns (NoteList){}
     rpc Insert (Note) returns (Note){}
+    rpc Delete (NoteId) returns (Note){}
 }
 
 /*
@@ -42,4 +43,8 @@ message Note {
 */
 message NoteList {
     repeated Note notes = 1;
+}
+
+message NoteId {
+    string id = 1;
 }

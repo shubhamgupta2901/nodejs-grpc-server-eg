@@ -33,6 +33,18 @@ server.addService(notesProto.NoteService.service,{
         note.id = uuidv1();
         dataStore.notes.push(note);
         callback(null, note);
+    },
+    delete: (call, callback) => {
+        let noteId = call.request.id;
+        debugger;
+        const noteIndex = dataStore.notes.findIndex(note => note.id === noteId);
+        if(noteIndex===-1){
+            callback(new Error('Note not found!'), null);
+            return;
+        }
+        const deletedNote = dataStore.notes[noteIndex];
+        dataStore.notes.splice(noteIndex,1);
+        callback(null, deletedNote);
     }
 })
 
