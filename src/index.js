@@ -9,7 +9,7 @@
 
 const grpc = require('grpc');
 const uuidv1 = require('uuid/v1');
-const notesProto = grpc.load('notes.proto');
+const notesProto = grpc.load('./src/notes.proto');
 const dataStore = require('./dataStore');
 
 const server = new grpc.Server();
