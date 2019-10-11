@@ -21,6 +21,7 @@ service NoteService {
     * and returns NoteList Message.
     */
     rpc List (Empty) returns (NoteList){}
+    rpc Insert (Note) returns (Note){}
 }
 
 /*

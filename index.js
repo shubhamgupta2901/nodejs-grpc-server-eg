@@ -8,6 +8,7 @@
  */
 
 const grpc = require('grpc');
+const uuidv1 = require('uuid/v1');
 const notesProto = grpc.load('notes.proto');
 const dataStore = require('./dataStore');
 
@@ -24,9 +25,15 @@ const server = new grpc.Server();
  * The first argument accepts an error object to indicate if there is an error to the client, in our case we just pass null.
  */
 server.addService(notesProto.NoteService.service,{
-    list: (_,callback) => {
+    list: (call,callback) => {
         callback(null, dataStore.notes);
-    } 
+    },
+    insert: (call, callback) =>{
+        let note = call.request;
+        note.id = uuidv1();
+        dataStore.notes.push(note);
+        callback(null, note);
+    }
 })
 
 
