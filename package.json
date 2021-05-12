@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/shubhamgupta2901/nodejs-grpc-server-eg#readme",
   "dependencies": {
-    "grpc": "^1.24.0",
+    "grpc": "^1.24.9",
     "uuid": "^3.3.3"
   }
 }
